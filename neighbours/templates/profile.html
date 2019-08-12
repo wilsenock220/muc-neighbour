@@ -42,6 +42,16 @@
 
             <p class="alert alert-danger">PLease Update your Profile for better experience</p>
             {%endif%}
+            <hr>
+            <div class="edit">
+                {%if profile%}
+                <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalRegisterForm">Edit
+                    profile</a>
+                {%else%}
+                <a class="btn btn-info" href="{%url 'edit'%}{{user.username}}">Update Profile</a>
+                {%endif%}
+                <a class="btn btn-info" href="{%url 'busi'%}">Add business</a>
+            </div>
         </div>
         <div class="col-md-8">
             <div class="imagePro">
@@ -50,20 +60,45 @@
 
                         <input name="businessesName" class="form-control mr-sm-2" type="search"
                             placeholder="Search business" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0 btn-sm" type="submit">Search</button>
+                        <button class="btn btn-sm btn-info" type="submit">Search</button>
                     </form>
 
                 </div>
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6" style="border-right: 1px solid grey">
+                        <h4 style='text-align:center'>Your Posts</h4>
+                        <hr>
+                        {% if post%}
+                        {%for po in post%}
+                        <p>{{po.post}}</p>
+                        {%endfor%}
+                        {%else%}
+                        <p style='text-align:center' class="alert alert-info">{{user}} Share Whats happening in your
+                            hood
+                            <br> <a href="{%url 'feeds'%}">get started</a></p>
+                        {%endif%}
+                    </div>
+                    <div class="col-md-6">
+                        <h4 style='text-align:center'>Business You have added</h4>
+                        <hr>
+                        {% if busi%}
+                        {%for bu in busi%}
+                        <ul class="list-group">
+                            <li class="list-group-item">{{bu.businessesName}}</li>
+                        </ul>
+                        {%endfor%}
+                        {%else%}
+                        <p style='text-align:center' class="alert alert-info">{{user}} Share your 1st busines <br> <a
+                                href="{%url 'busi'%}">get started</a></p>
+                        {%endif%}
+                    </div>
+
+                </div>
+
             </div>
-            <div class="edit">
-                {%if profile%}
-                <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalRegisterForm">Edit
-                    profile</a>
-                {%else%}
-                <a class="btn btn-info btn-sm" href="{%url 'edit'%}{{user.username}}">Update Profile</a>
-                {%endif%}
-                <a class="btn btn-info btn-sm" href="{%url 'busi'%}">Add a business</a>
-            </div>
+
             <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -89,34 +124,6 @@
             </div>
 
             <!-- feeds post and business-->
-
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 style='text-align:center'>Your Posts</h4>
-                    {% if post%}
-                    {%for po in post%}
-                    <p>{{po.post}}</p>
-                    {%endfor%}
-                    {%else%}
-                    <p style='text-align:center' class="alert alert-info">{{user}} Share Whats happening in your hood
-                        <br> <a href="{%url 'feeds'%}">get started</a></p>
-                    {%endif%}
-                </div>
-                <div class="col-md-6">
-                    <h4 style='text-align:center'>Business You have added</h4>
-                    {% if busi%}
-                    {%for bu in busi%}
-                    <ul class="list-group">
-                        <li class="list-group-item">{{bu.businessesName}}</li>
-                    </ul>
-                    {%endfor%}
-                    {%else%}
-                    <p style='text-align:center' class="alert alert-info">{{user}} Share your 1st busines <br> <a
-                            href="{%url 'busi'%}">get started</a></p>
-                    {%endif%}
-                </div>
-
-            </div>
 
 
 

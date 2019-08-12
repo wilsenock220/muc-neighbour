@@ -11,35 +11,34 @@
     <title></title>
 </head>
 
-<body id="login">
-    <div class="overly">
+<body id="nextDoor">
 
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="loginn">
-                        <div class="sizee">
-                            <form class=" form form-group" action="/accounts/login/" method="post">
-                                <h1>Login</h1>
-                                <i style="font-size:40px" class="fas fa-house-damage"></i>
-                                {%csrf_token%}
-                                {%bootstrap_form form%}
-                                <button class="btn btn-success btn-sm" type="submit" name="button">Login</button>
-                                <p>Dont have an account ? <a href="/accounts/register/">sign up</a></p>
-                            </form>
-                        </div>
+    <div class="container">
+        <h1 class="text-center p-5">PLEASE LOGIN</h1>
 
-                    </div>
-
-
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="sizee">
+                    <form class=" form form-group" action="/accounts/login/" method="post">
+                        <legend>Login</legend>
+                        <hr>
+                        {%csrf_token%}
+                        {%bootstrap_form form%}
+                        <hr>
+                        <button class="btn btn-outline-info" type="submit" name="button">Login</button>
+                        <p>Dont have an account ? <a href="/accounts/register/">sign up</a></p>
+                    </form>
                 </div>
-                <div class="col-md-3"></div>
+
+
 
             </div>
+            <div class="col-md-3"></div>
 
         </div>
+
     </div>
 </body>
 

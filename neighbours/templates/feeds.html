@@ -5,7 +5,7 @@
 <br>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <p class="alert alert-info">Your current NeigbourHood</p>
             {%for hud in hoods%}
 
@@ -13,7 +13,7 @@
 
             <ul class="list-group">
                 <a data-toggle="modal" data-target="#{{hud.name}}" href="#">
-                    <li class="list-group-item">{{hud.name}} || view details</li>
+                    <li class="list-group-item"> view {{hud.name}} details</li>
                 </a>
 
             </ul>
@@ -43,7 +43,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
                         </div>
                     </div>
@@ -61,20 +61,55 @@
 
             </ul>
             {%endfor%}
+
+            <div class="p-3">
+                <div class="makeFeed">
+                    <form role="search" class="form-group" action="{%url 'search'%}">
+                        <input name="businessesName" placeholder="Search for business" role="search"
+                            class="form-control" type="search" name="" value="">
+                    </form>
+                </div>
+                <hr>
+                <p class="p-2">Businesses nearby </p>
+                <hr>
+
+
+                {%if business%}
+                <div class="card">
+                    {%for busi in business%}
+
+                    <ul class="form-group">
+                        <li title='Contact {{busi.email}}' class="list-group-item">{{busi.businessesName}}
+                            <ul>
+                                <li class="">Owner {{busi.user}}</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    {%endfor%}
+                </div>
+                {%else%}
+                <p class="">Hi <strong>{{user}}</strong> No business has been registered yet in your
+                    area yet.
+                    <br>
+                    <a href="">Please add a business</a>
+                </p>
+                {%endif%}
+            </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div id="top" class="card">
                 <div class="card-body">
                     <h4>Next Door Trending News</h4>
                     {%for i in profile%}
                     {%if i.image%}
                     <a href="/profile/"><img title="See profile" height="50" width="50" class="rounded-circle"
-                            src="{{i.image.url}}" alt="">{%endif%}</a><i> Share whats in your mind</i>
+                            src="{{i.image.url}}" alt="">{%endif%}</a><i> Share going on in your area.</i>
                     {%endfor%}
                     <form class="" enctype="multipart/form-data" action="/feeds/neighbour/" method="post">
                         {%csrf_token%}
                         {%bootstrap_form form layout='inline'%}
-                        <button id='upload' class="btn btn-success btn-sm" type="submit" name="button">Post </button>
+                        <button id='upload' class="btn btn-success" type="submit" name="button">Post </button>
                     </form>
                 </div>
 
@@ -105,36 +140,7 @@
             </div>
 
         </div>
-        <div class="col-md-3">
-            <p class="alert alert-info">Businesses nearby </p>
-            <div class="makeFeed">
-                <form role="search" class="form-group" action="{%url 'search'%}">
-                    <input name="businessesName" placeholder="Search for business" role="search" class="form-control"
-                        type="search" name="" value="">
-                </form>
-            </div>
 
-            {%if business%}
-            <div class="card">
-                {%for busi in business%}
-
-                <ul class="form-group">
-                    <li title='Contact {{busi.email}}' class="list-group-item">{{busi.businessesName}}
-                        <ul>
-                            <li class="">Owner {{busi.user}}</li>
-                        </ul>
-                    </li>
-                </ul>
-
-                {%endfor%}
-            </div>
-            {%else%}
-            <p class="alert alert-info">Hi <strong>{{user}}</strong> No business has been registered yet in your area
-                <br>
-                <a href="">Add a business</a>
-            </p>
-            {%endif%}
-        </div>
 
     </div>
 

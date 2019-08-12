@@ -23,7 +23,7 @@ class BusinessForm(forms.ModelForm):
         ]
         widgets = {
             'businessesName':
-            forms.TextInput(attrs={'placeholder': 'Add a business Name'}),
+            forms.TextInput(attrs={'placeholder': 'Add a business'}),
             'email':
             forms.TextInput(attrs={'placeholder': 'Add a business email'}),
         }

@@ -8,38 +8,42 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>{{title}}</title>
 </head>
+<h1 class="text-center p-5">REGISTER TODAY</h1>
 
-<body id="login">
-    <div class="overly">
+<body id="nextDoor">
 
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="logins">
-                        <div class="sizee">
-                            <form class=" forms form-group" action="/accounts/register/" method="post">
-                                <h1 style="text-align:center">Sign Up</h1>
-                                <i style="font-size:40px;text-align:center" class="fas fa-house-damage"></i>
-                                {%csrf_token%}
-                                {%bootstrap_form form layout='inline'%}
-                                <button class="btn btn-success btn-sm" type="submit" name="button">Sign Up</button>
-                                or <a class="btn btn-outline-info btn-sm" href="/accounts/login/">Login</a>
-                            </form>
-                        </div>
+    <div class="container">
 
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="logins">
+                    <div class="sizee">
+
+                        <form class=" forms form-group" action="/accounts/register/" method="post">
+                            <legend style="text-align:center">Sign Up</legend>
+
+                            <hr>
+                            {%csrf_token%}
+                            {%bootstrap_form form layout='inline'%}
+                            <hr>
+                            <button class="btn btn-outline-info" type="submit" name="button">Sign Up</button>
+                            <p style="color: black">Already have an account ? <a href="/accounts/login/">Login</a></p>
+
+                        </form>
                     </div>
 
-
                 </div>
-                <div class="col-md-3"></div>
+
 
             </div>
+            <div class="col-md-3"></div>
 
         </div>
+
     </div>
 </body>
 
